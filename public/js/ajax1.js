@@ -4,7 +4,8 @@
 // the $ just references elsewhere and says its going to be a jquery
 var $friends = $('#friends');
 var $name = $('#name');
-var $age = $('#age');
+var $grade = $('#grade');
+var $deets = $('#deets');
 
 // this is used below/for the mustache {{}}/friend function to display the info
 // it isnt really used below, so it could be declared down
@@ -16,9 +17,10 @@ var $age = $('#age');
 var friendTemplate = "" +
 	"<li>" +
 	"<p><strong>Name:</strong> {{name}}</p>" +
-	"<p><strong>Age:</strong> {{age}}</p>" +
+	"<p><strong>Grade:</strong> {{grade}}</p>" +
+	"<p><strong>The Deets:</strong> {{deets}}</p>" +
 	// the id allows for speification and ability to delete
-	"<button id='{{id}}' class='remove'>X</button>" +
+	"<button id='{{id}}' class='remove'>She doesn't even go here!</button>" +
 	"</li>";
 
 // mustache = class that allows you do to editing
@@ -36,7 +38,7 @@ $(document).ready(function(){
 	$.ajax({
 		// what type of request? a get. where we going to get? the url
 		type: 'GET',
-		url: 'http://rest.learncode.academy/api/learncode/friends',
+		url: 'http://rest.learncode.academy/api/learncode/mh',
 		// successs emans did go through and returned, but done means went through even if not errored. better to use done because it can run but not finish
 		// when request is finished, add all the friends
 		// this will return list of friends. this friends refers to the #friends
@@ -45,12 +47,12 @@ $(document).ready(function(){
 			// for each object in friends, do the add option
 			$.each(friends, function(i, friend){
 				// if not the frind.na,e not exists. does NOT NOT exiat
-				if(!(!friend.name)&&!(!friend.age))addFriend(friend);
+				if(!(!friend.name)&&!(!friend.grade)&&!(!friend.deets))addFriend(friend);
 			});
 		},
 		// if fails, gives them the message
 		error: function(){
-			alert('eRRoR loADinG FRiENds, yA lOseR');
+			alert('Stop trying to make fetch happen!');
 		}
 	});
 	$('#add-friend').on('click', function(){
@@ -60,14 +62,15 @@ $(document).ready(function(){
 			// get the value of those objects from the id of name from the friend 
 			// object: value
 			name: $name.val(),
-			age: $age.val()
+			grade: $grade.val(),
+			deets: $deets.val()
 		};
 		$.ajax({
 			// submit ajax reuqst to post the url
 			// when put a nam ein the boxes those have an id
 			type: 'POST',
 			// dont need the slash because it doesnt have anything after/no id
-			url: 'http://rest.learncode.academy/api/learncode/friends',
+			url: 'http://rest.learncode.academy/api/learncode/mh',
 			// for this object friend from the click event since still inside the click event, pass to the url above
 			data: friend,
 			// if request goes through, add friend
@@ -76,7 +79,7 @@ $(document).ready(function(){
 			},
 			// if not, send out this alert
 			error: function(){
-				alert('eRRoR SaVInG ORdeR');
+				alert('Stop trying to make fetch happen!');
 			}
 		});
 	}); //end click event 
@@ -86,6 +89,7 @@ $(document).ready(function(){
 		// closest list item in w/e you clicked, get it and pass it to var to use it. the li is for us to know, except the 'li' is needed
 		// looks for nearest list item when you click
 		// the this references above
+		playSound('playdelete');
 		var $li = $(this).closest('li');
 		// AJAX DELETE function = click the .remove class button and the id identifies what to delete
 		$.ajax({
@@ -95,7 +99,7 @@ $(document).ready(function(){
 			// need a slash after the friends because it adds in the id part
 			// the id knows what to delete
 			// finding attribute of id
-			url: 'http://rest.learncode.academy/api/learncode/friends/' + $(this).attr('id'),
+			url: 'http://rest.learncode.academy/api/learncode/mh/' + $(this).attr('id'),
 			success: function(){
 				// take the li and fadeout and remove it
 				// the 300 means the speed/the time. the function is the callback

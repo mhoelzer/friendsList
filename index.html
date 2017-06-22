@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<!-- title of the webpage and tab -->
-		<title>Ajax Tutorial</title>
+		<title>Burn Book: Ajax Tutorial</title>
 		<!-- linsk to css and jquery and bootstrap??? whatbout bootstrap??? -->
 		<link rel="stylesheet" type="text/css" href="public/css/main.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -10,20 +10,32 @@
 	</head>
 	<body>
 		<!-- main title -->
-		<h1>jQuery Ajax Tutorial</h1>
 		<!-- subtitle/start of the friend list secton -->
-		<h2>Friend Add</h2>
+		<div class="wrapper">
+			<img src="./public/css/img/burnbook.png" class="bba" alt="bb" width="30%" height="30%">
+				<div class="gradient"></div>
+		</div>
 		<!-- makes the unordered list -->
 		<ul id="friends"></ul>
 		<!-- this si where we input name and age -->
-		<h4>Add a Friend</h4>
-		<p>Name: <input type="text" id="name"></p>
-		<p>Age: <input type="text" id="age"></p>
-		<!-- adds the friend -->
-		<button id="add-friend">Add!</button>
+		<div class="contentWrapper">
+			<h4>You let it out, honey.</h4>
+			<p>Name: <input type="text" id="name"></p>
+			<p>Grade: <input type="text" id="grade"></p>
+			<p>The Deets: <input type="text" id="deets"></p>
+			<!-- adds the friend -->
+			<button id="add-friend" onclick="playSound('play')">Put it in the book.</button>
+				<audio id="play" src="./public/css/img/piitb.mp3"></audio>
+				<audio id="playdelete" src="./public/js/sdegh.mp3"></audio>
+				<script type="text/javascript">
+					function playSound (song) {
+	    				document.getElementById(song).play();
+					}
+				</script>
+		</div>
 
 		<!-- js files -->
-		<script src="public/js/ajax.js"></script>
+		<script src="public/js/ajax1.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
 	</body>
 </html>

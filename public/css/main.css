@@ -1,0 +1,85 @@
+html{
+	background-color: rgb(226, 76, 151);
+}
+
+img.bba{
+	display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
+.gradient {
+	background-image:
+    	radial-gradient(
+      	rgba(255,255,255, 1),
+      	transparent,
+      	transparent
+    );
+	width: 100%;
+	height: 100%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@font-face{
+	font-family: angelina; src: url(angelina.TTF);
+}
+
+h4, p{
+	color: black;
+	font-family: angelina;
+	font-size: 30px;
+}
+
+ul#friends {
+	background-color: rgba(255, 255, 255, 1);
+	margin: 2em;
+	padding: 2em;
+	display: inline-block;
+	border-radius: 2em;
+	box-shadow: 1px 1px 1px 1px black;
+	vertical-align: center; 
+	position: relative;
+	display: block;
+	width: 900px;
+	margin: 0 auto;
+	background-color: #fff;
+	border: #FFEE35 dotted 7px;
+}
+
+.contentWrapper{
+	text-align: center;
+	border:  #59E817 dashed 5px;
+	background-color: white;
+	border-radius: 2em;
+	margin: 0 auto;
+	max-width: 1170px;
+	padding: 0em 1em 1em 1em;
+}
+
+@font-face{
+	font-family: earwig_factory; src: url(earwigfactory.ttf);
+}
+button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 30px;
+  font-family: earwig_factory;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+button:hover {background-color: #3e8e41}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
